@@ -1,4 +1,4 @@
-﻿namespace Gullible;
+﻿namespace Gullible.Windows;
 
 public partial class GullibleText
 {

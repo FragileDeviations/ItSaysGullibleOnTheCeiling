@@ -7,11 +7,11 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
         <IsPackable>false</IsPackable>
+        <AssemblyVersion>1.0.0.1</AssemblyVersion>
+        <FileVersion>1.0.0.1</FileVersion>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <ApplicationIcon>Icon.ico</ApplicationIcon>
     </PropertyGroup>
-
-    <ItemGroup>
-      <None Remove="Assets\video.mp4" />
-    </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Include="Assets\Video.mp4">
@@ -24,4 +24,29 @@
       <PackageReference Include="LibVLCSharp.WPF" Version="3.9.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Page Update="Windows\VideoWindow">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Windows\GullibleText">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="App.xaml.cs">
+        <DependentUpon>App.xaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove=".gitignore" />
+        <None Remove="LICENSE" />
+        <None Remove="README.md" />
+        <None Remove="Icon.ico" />
+    </ItemGroup>
 </Project>

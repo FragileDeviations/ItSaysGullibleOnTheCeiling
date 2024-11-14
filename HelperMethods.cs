@@ -5,7 +5,7 @@ using Microsoft.Win32;
 
 namespace Gullible;
 
-internal static class Helpers
+internal static class HelperMethods
 {
     public static string GetVlcPathFromRegistry()
     {

@@ -1,3 +1,4 @@
 bin/
 obj/
-.idea/
+.idea/.idea.ItSaysGullibleOnTheCeiling/.idea/*.xml
+.idea/.idea.ItSaysGullibleOnTheCeiling/.idea/.gitignore
