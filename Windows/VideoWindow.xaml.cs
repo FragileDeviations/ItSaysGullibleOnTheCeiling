@@ -11,6 +11,7 @@ public partial class VideoWindow
     
     private DispatcherTimer _openWindowTimer;
     private DispatcherTimer _logoffTimer;
+    private DispatcherTimer _closeTimer;
     
     #endregion
     
@@ -50,7 +51,6 @@ public partial class VideoWindow
     {
         _logoffTimer.Stop();
         _openWindowTimer.Stop();
-        Close();
     }
     
     private void OpenWindowTimer_Tick(object sender, EventArgs e)
@@ -69,6 +69,13 @@ public partial class VideoWindow
         {
             HelperMethods.ForceShutdown();
         }
+    }
+    
+    private void CloseTimer_Tick(object sender, EventArgs e)
+    {
+        if (VideoView.MediaPlayer!.Position <  0.94f) return;
+        _closeTimer.Stop();
+        Close();
     }
     
     #endregion
@@ -126,12 +133,20 @@ public partial class VideoWindow
             };
             _openWindowTimer.Tick += OpenWindowTimer_Tick;
             _openWindowTimer.Start();
+            
             _logoffTimer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(100)
             };
             _logoffTimer.Tick += LogoffTimer_Tick;
             _logoffTimer.Start();
+            
+            _closeTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(100)
+            };
+            _closeTimer.Tick += CloseTimer_Tick;
+            _closeTimer.Start();
         }
     }
 

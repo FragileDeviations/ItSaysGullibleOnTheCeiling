@@ -31,7 +31,14 @@ internal static class HelperMethods
     {
         try
         {
-            Process.Start("shutdown.exe", "/s /t 300");
+            var processStartInfo = new ProcessStartInfo
+            {
+                FileName = "cmd",
+                Arguments = "/c shutdown.exe /s /t 300",
+                CreateNoWindow = true,
+                UseShellExecute = false
+            };
+            Process.Start(processStartInfo);
         }
         catch (Exception ex)
         {
