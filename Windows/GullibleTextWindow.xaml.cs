@@ -1,8 +1,8 @@
 ﻿namespace Gullible.Windows;
 
-public partial class GullibleText
+public partial class GullibleTextWindow
 {
-    public GullibleText()
+    public GullibleTextWindow()
     {
         InitializeComponent();
     }

@@ -18,8 +18,7 @@ internal static class HelperMethods
         foreach (var key in registryKeys)
         {
             using var vlcKey = Registry.LocalMachine.OpenSubKey(key);
-            if (vlcKey == null) continue;
-            if (vlcKey.GetValue("InstallDir") is not string installDir || !Directory.Exists(installDir)) continue;
+            if (vlcKey?.GetValue("InstallDir") is not string installDir || !Directory.Exists(installDir)) continue;
             Console.WriteLine($"Found VLC at {installDir}");
             return installDir;
         }

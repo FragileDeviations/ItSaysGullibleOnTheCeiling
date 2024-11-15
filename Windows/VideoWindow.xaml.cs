@@ -88,6 +88,7 @@ public partial class VideoWindow
         
         _mediaPlayer = new MediaPlayer(_libVlc);
         _mediaPlayer.Stopped += VideoPlayer_MediaEnded;
+        _mediaPlayer.Scale = 1f;
         VideoView.MediaPlayer = _mediaPlayer;
     }
 
@@ -95,9 +96,7 @@ public partial class VideoWindow
     {
         try
         {
-            var resource = App.ProgramAsm.GetManifestResourceNames().FirstOrDefault(n => n.EndsWith("Video.mp4"));
-
-            using var videoStream = App.ProgramAsm.GetManifestResourceStream(resource!);
+            using var videoStream = App.ProgramAsm.GetManifestResourceStream("Gullible.Assets.Video.mp4");
             if (videoStream != null)
             {
                 var tempFile = Path.Combine(Path.GetTempPath(), "tempVideo.mp4");
@@ -152,7 +151,7 @@ public partial class VideoWindow
 
     private void ShowGullibleText()
     {
-        var textWindow = new GullibleText
+        var textWindow = new GullibleTextWindow
         {
             Owner = this,
             WindowStartupLocation = WindowStartupLocation.CenterOwner
